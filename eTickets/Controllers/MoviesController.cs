@@ -22,7 +22,7 @@ namespace eTickets.Controllers
         // GET: Movies
         public async Task<IActionResult> Index()
         {
-            var appDbContext = _context.Movies.Include(m => m.Cinema).Include(m => m.Producer);
+            var appDbContext = _context.Movies.Include(m => m.Cinema).OrderBy(n=>n.Name).Include(m => m.Producer);
             return View(await appDbContext.ToListAsync());
         }
 
